@@ -136,10 +136,14 @@ public class AppRunner {
         }
 
         int userChoose = sc.nextInt();
+        sc.nextLine();
+
         if (userChoose >= 1 && userChoose <= paymentMethods.size()) {
             PaymentMethod chosenMethod = paymentMethods.get(userChoose - 1);
             print("Введите сумму для пополнения:");
             int amount = sc.nextInt();
+            sc.nextLine();
+
             chosenMethod.addAmount(amount);
             print("Вы пополнили баланс на " + amount + " с помощью " + chosenMethod.getName());
         } else {
