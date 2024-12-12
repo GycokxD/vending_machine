@@ -11,7 +11,13 @@ public class AppRunner {
 
     private final CoinAcceptor coinAcceptor;
 
+    private MoneyAcceptor moneyAcceptor;
+
+    private CardAcceptor cardAcceptor;
+
     private static boolean isExit = false;
+
+    private static Scanner sc = new Scanner(System.in);
 
     private AppRunner() {
         products.addAll(new Product[]{
@@ -102,5 +108,28 @@ public class AppRunner {
 
     private void print(String msg) {
         System.out.println(msg);
+    }
+
+    private void choosePayment() {
+        print("Выберите способ оплаты: " +
+                "1. Нальчными" +
+                "2. Картой" +
+                "3. Монетами");
+        int userChoose = sc.nextInt();
+        switch (userChoose){
+            case 1:
+                coinAcceptor.setAmount(coinAcceptor.getAmount() + 10);
+                print("Вы пополнили баланс на 10");
+            break;
+            case 2:
+                print("Введите сумму которую хотите пополнить: ");
+                int userAmountForCardAcceptor = sc.nextInt();
+                cardAcceptor.setAmount(cardAcceptor.getAmount() + userAmountForCardAcceptor);
+                print("Вы пополнили баланс на " + userAmountForCardAcceptor);
+            break;
+            case 3:
+                moneyAcceptor.setAmount(moneyAcceptor.getAmount() + 100);
+                print("Вы пополнили баланс на 100");
+        }
     }
 }
