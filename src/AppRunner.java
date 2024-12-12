@@ -29,6 +29,8 @@ public class AppRunner {
                 new Pistachios(ActionLetter.G, 130)
         });
         coinAcceptor = new CoinAcceptor(100);
+        moneyAcceptor = new MoneyAcceptor(20);
+        cardAcceptor = new CardAcceptor(0);
     }
 
     public static void run() {
@@ -111,10 +113,10 @@ public class AppRunner {
     }
 
     private void choosePayment() {
-        print("Выберите способ оплаты: " +
-                "1. Нальчными" +
-                "2. Картой" +
-                "3. Монетами");
+        print("Выберите способ оплаты: ");
+        print("1. Нальчными");
+        print("2. Картой");
+        print("3. Монетами");
         int userChoose = sc.nextInt();
         switch (userChoose){
             case 1:
